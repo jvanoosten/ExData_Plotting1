@@ -3,7 +3,7 @@ plot2 <- function() {
   require("dplyr")
   library(dplyr)   
   
-  setwd("/Users/jimvo/Documents/coursera/datascience/exploratorydataanalysis/project1")
+  setwd("/Users/jimvo/Documents/coursera/datascience/exploratorydataanalysis/project1/ExData_Plotting1")
   
   # Verify the assumption that the data is there 
   if (!file.exists("household_power_consumption.txt")) {
@@ -23,9 +23,8 @@ plot2 <- function() {
   # Combine the Date & Time fields in the Date column
   power$Date <- strptime(paste(power$Date,power$Time), format("%d/%m/%Y %T"))
 
+  # plot datetime vs Global_active_power
   png("plot2.png")
-  opar <- par(no.readonly=TRUE)
   plot(power$Date, power$Global_active_power, type="l", xlab="", ylab="Global Active Power (kilowatts)")
-  par(opar)
   dev.off()
 }
