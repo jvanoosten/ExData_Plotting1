@@ -3,7 +3,7 @@ plot1 <- function() {
   require("dplyr")
   library(dplyr)   
   
-  setwd("/Users/jimvo/Documents/coursera/datascience/exploratorydataanalysis/project1")
+  setwd("/Users/jimvo/Documents/coursera/datascience/exploratorydataanalysis/project1/ExData_Plotting1")
  
   # Verify the assumption that the data is there 
   if (!file.exists("household_power_consumption.txt")) {
@@ -23,10 +23,9 @@ plot1 <- function() {
   # Combine the Date & Time fields in the Date column
   power$Date <- strptime(paste(power$Date,power$Time), format("%d/%m/%Y %T"))
   
+  # open png device for the plot
   png("plot1.png")
-  opar <- par(no.readonly=TRUE)
-  hist(power$Global_active_power, xlab="Global Active Power (kilowatts)", ylab="Frequency", main="Global Active Power", col="red")
+  # create a histogram of the Global_active_power
   hist(power$Global_active_power, xlab="Global Active Power (kilowatts)", ylab="Frequency", main="Global Active Power", col="red", ylim=c(0,1200))
-  par(opar)
   dev.off()
 }
